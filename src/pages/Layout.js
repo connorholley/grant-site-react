@@ -8,7 +8,7 @@ const Layout = () => {
   const navigation = [
     { name: "About", href: "/", section: "about" },
     { name: "Grants", href: "grants", section: "grants" },
-    { name: "Supplementary", href: "supplementary", section: "supplementary" },
+    { name: "Cover Letter Tips", href: "coverLetter", section: "coverLetter" },
     {
       name: "Template Emails",
       href: "templateEmails",
