@@ -1,13 +1,32 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Switch } from "@headlessui/react";
+
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function Contact() {
-  const [agreed, setAgreed] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setUserInfo((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(userInfo);
+    console.log(userInfo);
+
+    axios
+      .post(`https://jsonplaceholder.typicode.com/users`, { userInfo })
+      .then((res) => {
+        //TODO this is where the contact stuff will be posted eventually
+        console.log(res);
+        console.log(res.data);
+      });
+  };
   return (
     <div className="bg-white  ">
       <div className="isolate bg-white px-6 py-8 lg:px-8">
@@ -20,7 +39,7 @@ export default function Contact() {
             Contact Us!
           </h2>
         </div>
-        <form action="#" method="POST" className="mx-auto  max-w-xl sm:mt-12">
+        <form onSubmit={handleSubmit} className="mx-auto  max-w-xl sm:mt-12">
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div>
               <label
@@ -32,9 +51,11 @@ export default function Contact() {
               <div className="mt-2.5">
                 <input
                   type="text"
-                  name="first-name"
+                  name="firstName"
                   id="first-name"
                   autoComplete="given-name"
+                  value={userInfo.firstName || ""}
+                  onChange={handleChange}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -49,9 +70,11 @@ export default function Contact() {
               <div className="mt-2.5">
                 <input
                   type="text"
-                  name="last-name"
+                  name="lastName"
                   id="last-name"
                   autoComplete="family-name"
+                  value={userInfo.lastName || ""}
+                  onChange={handleChange}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -70,6 +93,8 @@ export default function Contact() {
                   name="email"
                   id="email"
                   autoComplete="email"
+                  value={userInfo.email || ""}
+                  onChange={handleChange}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -89,6 +114,8 @@ export default function Contact() {
                   rows={4}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
+                  value={userInfo.message || ""}
+                  onChange={handleChange}
                 />
               </div>
             </div>
