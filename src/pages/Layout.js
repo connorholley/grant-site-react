@@ -9,6 +9,7 @@ const Layout = () => {
     { name: "About", href: "/", section: "about" },
     { name: "Grants", href: "grants", section: "grants" },
     { name: "Cover Letter Tips", href: "coverLetter", section: "coverLetter" },
+    { name: "Interview Tips", href: "interview", section: "interview" },
     {
       name: "Template Emails",
       href: "templateEmails",
