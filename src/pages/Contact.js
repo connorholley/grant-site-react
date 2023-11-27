@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import grantable from "../grantable";
 import axios from "axios";
 
 function classNames(...classes) {
@@ -16,16 +16,13 @@ export default function Contact() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(userInfo);
-    console.log(userInfo);
 
-    axios
-      .post(`https://jsonplaceholder.typicode.com/users`, { userInfo })
-      .then((res) => {
-        //TODO this is where the contact stuff will be posted eventually
-        console.log(res);
-        console.log(res.data);
-      });
+    grantable.post(`/info.json`, { userInfo }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+
+    alert("info has been submitted succesfully!");
   };
   return (
     <div className="bg-white  ">
