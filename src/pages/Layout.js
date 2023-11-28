@@ -16,6 +16,7 @@ const Layout = () => {
       section: "templateEmails",
     },
     { name: "Contact", href: "contact", section: "contact" },
+    { name: "Admin", href: "admin", section: "admin" },
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ const Layout = () => {
 
   return (
     <>
-      <header className="bg-blue-500">
+      <header className="bg-blue-500 font-sans">
         <nav
           className="flex items-center justify-between p-6 lg:px-8"
           aria-label="Global"
@@ -76,7 +77,15 @@ const Layout = () => {
               </Link>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a
+              href="login"
+              className="text-sm font-semibold leading-6 text-white"
+              onClick={() => handleSectionClick("none")}
+            >
+              Log in <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </nav>
         <Dialog
           as="div"

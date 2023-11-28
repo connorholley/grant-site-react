@@ -10,6 +10,10 @@ import Contact from "./pages/Contact";
 import CoverLetter from "./pages/CoverLetter";
 
 import Interview from "./pages/Interview";
+import Admin from "./pages/Admin";
+import Login from "./pages/Login";
+import { RequireAuth } from "react-auth-kit";
+import { AuthProvider } from "react-auth-kit";
 
 export default function App() {
   return (
@@ -22,6 +26,16 @@ export default function App() {
           <Route path="coverLetter" element={<CoverLetter />} />
           <Route path="interview" element={<Interview />} />
           <Route path="templateEmails" element={<TemplateEmails />} />
+
+          <Route
+            path="admin"
+            element={
+              // <RequireAuth loginPath={"/login"}>
+              <Admin />
+              /* </RequireAuth> */
+            }
+          />
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
