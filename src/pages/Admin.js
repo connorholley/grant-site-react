@@ -26,8 +26,7 @@ export default function Admin() {
             Recent Contacts
           </h1>
           <p className="mt-2 text-sm text-gray-700">
-            A list of all the users in your account including their name, title,
-            email and role.
+            A list of all the recent contacts to this site.
           </p>
         </div>
       </div>
