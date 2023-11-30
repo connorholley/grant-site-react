@@ -1,14 +1,35 @@
-export default function Login() {
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const isValidLogin =
+    email === "connorholley1@gmail.com" && password === "password";
+
+  const handleChangeEmail = (event) => {
+    const value = event.target.value;
+    setEmail(value);
+  };
+
+  const handleChangePassword = (event) => {
+    const value = event.target.value;
+    setPassword(value);
+  };
+
+  const handleLogin = () => {
+    if (isValidLogin) {
+      // Navigate to the admin page upon successful login
+      navigate("/admin");
+    } else {
+      alert("Wrong email or password. Try again!");
+    }
+  };
+
   return (
     <>
-      {/*
-          This example requires updating your template:
-  
-          ```
-          <html class="h-full bg-white">
-          <body class="h-full">
-          ```
-        */}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -32,6 +53,7 @@ export default function Login() {
                   type="email"
                   autoComplete="email"
                   required
+                  onChange={handleChangeEmail}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -53,6 +75,7 @@ export default function Login() {
                   type="password"
                   autoComplete="current-password"
                   required
+                  onChange={handleChangePassword}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -60,8 +83,9 @@ export default function Login() {
 
             <div>
               <button
-                type="submit"
+                type="button" // Change type to "button" to prevent form submission
                 className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={handleLogin}
               >
                 Sign in
               </button>
@@ -71,4 +95,6 @@ export default function Login() {
       </div>
     </>
   );
-}
+};
+
+export default Login;
