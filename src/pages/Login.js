@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import grantable from "../grantable";
 import PropTypes from "prop-types";
 
 async function loginUser(credentials) {
-  return fetch("http://localhost:8080/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  try {
+    const response = await grantable.get(`/admin.json`);
+    const userData = response.data;
+    console.log(userData);
+    console.log(credentials);
+    if (userData && userData.password === credentials.password) {
+      return { success: true, message: "Login successful" };
+    } else {
+      return { success: false, message: "Invalid credentials" };
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return { success: false, message: "Error during login" };
+  }
 }
 export default function Login({ setToken }) {
   const [email, setEmail] = useState("");
@@ -27,11 +34,17 @@ export default function Login({ setToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      email,
-      password,
-    });
-    setToken(token);
+    const result = await loginUser({ email, password });
+
+    if (result.success) {
+      setToken(result); // You may want to set a token or user information here
+      console.log("success");
+    } else {
+      console.error(result.message);
+      alert("invalid credentials");
+      // Handle login failure
+      // You might want to show an error message to the user
+    }
   };
 
   return (
