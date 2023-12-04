@@ -89,6 +89,7 @@ const Layout = () => {
               </a>
             </div>
           </nav>
+
           <Dialog
             as="div"
             className="lg:hidden"
@@ -124,7 +125,7 @@ const Layout = () => {
                       <Link
                         key={item.section}
                         to={item.href}
-                        className={`text-sm font-semibold leading-6 text-gray-900 p-2 rounded-md  ${
+                        className={` -mx-3 block text-sm font-semibold leading-6 text-gray-900 p-2 rounded-md  ${
                           selectedSection === item.section
                             ? "bg-orange-500"
                             : "bg-white"
@@ -141,7 +142,7 @@ const Layout = () => {
           </Dialog>
         </header>
         <Outlet />
-        <footer className="bg-blue-500 p-4 text-white bottom-0">
+        <footer className="bg-blue-500 p-4 text-white relative bottom-0 w-full">
           <p>Grantable | Connor Holley | ENSH 401</p>
         </footer>
       </div>

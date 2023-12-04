@@ -10,7 +10,10 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pr-4">
-            <img className="rounded-md" src={require("../assets/connor.jpg")} />
+            <img
+              className="rounded-md py-12 md:py-0 lg:py-0"
+              src={require("../assets/connor.jpg")}
+            />
           </div>
           <div>
             <div className="text-base leading-7 text-gray-700 lg:max-w-lg">
@@ -30,7 +33,7 @@ export default function About() {
               </div>
             </div>
 
-            <dl className="mt-10 grid grid-cols-2 gap-8 border-t border-gray-900/10 pt-10 sm:grid-cols-4">
+            <dl className="mt-10 grid grid-cols-2 gap-8 border-t border-gray-900/10 pt-10 sm:grid-cols-4 py-10 ">
               {stats.map((stat, statIdx) => (
                 <div key={statIdx}>
                   <dt className="text-sm font-semibold leading-6 text-gray-600">

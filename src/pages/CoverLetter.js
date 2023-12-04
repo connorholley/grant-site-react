@@ -1,50 +1,3 @@
-// import {
-//   CloudArrowUpIcon,
-//   LockClosedIcon,
-//   ServerIcon,
-// } from "@heroicons/react/20/solid";
-
-// export default function CoverLetter() {
-//   return (
-//     <div className="relative bg-white">
-//       <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
-//         <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
-//           <div className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
-//             <img
-//               className="absolute inset-0 h-full w-full bg-gray-50 object-cover"
-//               src={require("../assets/cover-letter.jpg")}
-//               alt=""
-//             />
-//           </div>
-//         </div>
-//         <div className="px-6 lg:contents">
-//           <div className="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-12 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-12 xl:w-1/2">
-//             <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-//               Cover letter tips
-//             </h1>
-//             <p className="mt-6 text-xl leading-8 text-gray-700">
-//               A cover letter plays a pivotal role in the hiring process as it
-//               provides a unique opportunity for job seekers to go beyond their
-//               resume and engage with prospective employers on a more personal
-//               level. It serves as a tailored introduction, offering insights
-//               into an applicant's personality, motivations, and qualifications.
-//               A well-crafted cover letter not only highlights a candidate's
-//               relevant skills and experiences but also showcases their genuine
-//               interest in the company and the position. It demonstrates an
-//               individual's ability to communicate effectively, their attention
-//               to detail, and their commitment to the role. Moreover, it enables
-//               employers to assess a candidate's cultural fit, communication
-//               skills, and enthusiasm, making it an invaluable tool for both job
-//               seekers and hiring managers in making informed hiring decisions.
-//             </p>
-
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 export default function About() {
   return (
     <div className="bg-white  sm:py-12">
@@ -196,7 +149,7 @@ export default function About() {
                       to convey a sense of energy and accomplishment.
                     </li>
 
-                    <li className="flex gap-x-3">
+                    <li className="flex gap-x-3 pb-12">
                       Thank the Reader: Express gratitude for considering your
                       application, and let them know you look forward to the
                       opportunity to discuss your qualifications in an
