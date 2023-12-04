@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import About from "./pages/About";
@@ -13,8 +13,11 @@ import CoverLetter from "./pages/CoverLetter";
 import Interview from "./pages/Interview";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
+import useToken from "./useToken";
 
 export default function App() {
+  const { token, setToken } = useToken();
+
   return (
     <BrowserRouter>
       <Routes>
@@ -26,7 +29,10 @@ export default function App() {
           <Route path="interview" element={<Interview />} />
           <Route path="templateEmails" element={<TemplateEmails />} />
 
-          <Route path="admin" element={<Admin />} />
+          <Route
+            path="admin"
+            element={token ? <Admin /> : <Login setToken={setToken} />}
+          />
           <Route path="login" element={<Login />} />
           <Route path="*" element={<NoPage />} />
         </Route>

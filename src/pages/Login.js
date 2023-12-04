@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const Login = () => {
+async function loginUser(credentials) {
+  return fetch("http://localhost:8080/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+export default function Login({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const isValidLogin =
-    email === "connorholley1@gmail.com" && password === "password";
 
   const handleChangeEmail = (event) => {
     const value = event.target.value;
@@ -19,13 +25,13 @@ const Login = () => {
     setPassword(value);
   };
 
-  const handleLogin = () => {
-    if (isValidLogin) {
-      // Navigate to the admin page upon successful login
-      navigate("/admin");
-    } else {
-      alert("Wrong email or password. Try again!");
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    });
+    setToken(token);
   };
 
   return (
@@ -85,7 +91,7 @@ const Login = () => {
               <button
                 type="button" // Change type to "button" to prevent form submission
                 className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={handleLogin}
+                onClick={handleSubmit}
               >
                 Sign in
               </button>
@@ -95,6 +101,8 @@ const Login = () => {
       </div>
     </>
   );
-};
+}
 
-export default Login;
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};

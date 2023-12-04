@@ -10,12 +10,14 @@ const Layout = () => {
     { name: "Grants", href: "grants", section: "grants" },
     { name: "Cover Letter Tips", href: "coverLetter", section: "coverLetter" },
     { name: "Interview Tips", href: "interview", section: "interview" },
+
     {
       name: "Template Emails",
       href: "templateEmails",
       section: "templateEmails",
     },
     { name: "Contact", href: "contact", section: "contact" },
+    { name: "Admin", href: "admin", section: "admin" },
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -78,7 +80,7 @@ const Layout = () => {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <a
+              {/* <a
                 href="login"
                 className="text-sm font-semibold leading-6 text-white"
                 onClick={() => {
@@ -86,7 +88,7 @@ const Layout = () => {
                 }}
               >
                 Log in <span aria-hidden="true">&rarr;</span>
-              </a>
+              </a> */}
             </div>
           </nav>
 
