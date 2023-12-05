@@ -21,7 +21,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout setToken={setToken} token={token} />}>
           <Route index element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="grants" element={<Grants />} />

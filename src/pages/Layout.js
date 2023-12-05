@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const Layout = () => {
+export default function Layout({ setToken, token }) {
   const navigation = [
-    { name: "About", href: "/", section: "about" },
+    { name: "About", href: "/", section: "/" },
     { name: "Grants", href: "grants", section: "grants" },
     { name: "Cover Letter Tips", href: "coverLetter", section: "coverLetter" },
     { name: "Interview Tips", href: "interview", section: "interview" },
@@ -23,7 +23,7 @@ const Layout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [selectedSection, setSelectedSection] = useState(
-    localStorage.getItem("selectedSection") || "about"
+    window.location.pathname
   );
 
   const handleSectionClick = (section) => {
@@ -32,7 +32,6 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    // Save the selected section to localStorage
     localStorage.setItem("selectedSection", selectedSection);
   }, [selectedSection]);
 
@@ -81,15 +80,21 @@ const Layout = () => {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              {/* <a
-                href="login"
-                className="text-sm font-semibold leading-6 text-white"
-                onClick={() => {
-                  handleSectionClick("none");
-                }}
-              >
-                Log in <span aria-hidden="true">&rarr;</span>
-              </a> */}
+              {token ? (
+                <a
+                  href="login"
+                  className="text-sm font-semibold leading-6 text-white"
+                  onClick={() => {
+                    setToken("");
+                  }}
+                >
+                  Log out <span aria-hidden="true">&rarr;</span>
+                </a>
+              ) : (
+                <a className="text-sm font-semibold leading-6 text-white">
+                  <span aria-hidden="true"></span>
+                </a>
+              )}
             </div>
           </nav>
 
@@ -151,6 +156,4 @@ const Layout = () => {
       </div>
     </>
   );
-};
-
-export default Layout;
+}

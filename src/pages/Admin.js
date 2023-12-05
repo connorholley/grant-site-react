@@ -46,7 +46,7 @@ export default function Admin() {
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    Title
+                    Last Name
                   </th>
                   <th
                     scope="col"
@@ -56,7 +56,7 @@ export default function Admin() {
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-64 "
                   >
                     Message
                   </th>
@@ -74,7 +74,8 @@ export default function Admin() {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {person.userInfo.email}
                     </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    {/* TODO need to make it so the message scrolls as opposed to flex */}
+                    <td className="px-3 py-4 text-sm text-gray-500 max-h-30 overflow-y-auto  ">
                       {person.userInfo.message}
                     </td>
                   </tr>
