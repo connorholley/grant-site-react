@@ -28,6 +28,7 @@ const Layout = () => {
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
